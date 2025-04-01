@@ -1,0 +1,31 @@
+@startuml
+Class Alumno{
+-nombre: String
+-materiasAprobadas: List<Materia>
++agregarMaterias(Materia ... materias):void
++Alumno(List<Materia> materiasAprobadas, String nombre):Alumno
+}
+
+Class Materia{
+-nombre: String
+-materiasCorrelativas: List<Materia>
++Materia(String nombre, List<Materia> materiasCorrelativas):Materia
++agregarCorrelativas(Materia ... materias):void
++eliminarCorrelativa(Materia materia):void
+}
+
+Class Inscripcion{
+-alumno: Alumno
+-materias: List<Materia>
++Inscripcion(List<Materia> materias, Alumno alumno):Inscripcion
++agregarMaterias(Materia ...):void
++eliminarMateria(Materia):void
++aprobada():bool
+}
+Alumno <--* Inscripcion
+Alumno *-->"*"Materia
+Inscripcion *-->"*"Materia
+Materia o-->"*"Materia
+
+
+@enduml
